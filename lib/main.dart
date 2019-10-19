@@ -123,6 +123,15 @@ class _StoreState extends State<Store> {
         appBar: AppBar(
           backgroundColor: Colors.blue[900],
         ),
+        body: Row(
+          children: <Widget>[
+            FlatButton(
+              onPressed:(){
+                runApp(Home());
+              },
+            ),
+          ],
+        ),
       ),
     ));
   }
@@ -161,6 +170,7 @@ class _CostCalculatorState extends State<CostCalculator> {
         appBar: AppBar(
           backgroundColor: Colors.blue[900],
         ),
+
       ),
     ));
   }
