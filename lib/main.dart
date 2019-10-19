@@ -61,7 +61,10 @@ class _HomeState extends State<Home> {
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              FlatButton(onPressed: (){},
+              FlatButton(
+                onPressed: (){
+                  runApp(CostCalculator());
+                },
                 padding: EdgeInsets.symmetric(horizontal: 140),
                 color: Colors.red,
                 child: Text(
@@ -81,8 +84,9 @@ class _HomeState extends State<Home> {
             children: <Widget>[
               FlatButton(
                 padding: EdgeInsets.symmetric(horizontal: 170),
-                onPressed:(){},
-
+                onPressed:(){
+                  runApp(Tourism());
+                },
                 color: Colors.red,
                 child: Text(
                   'Tourism',
@@ -124,6 +128,46 @@ class _StoreState extends State<Store> {
     ));
   }
 }
+
+class Tourism extends StatefulWidget {
+  @override
+  _TourismState createState() => _TourismState();
+}
+
+class _TourismState extends State<Tourism> {
+  @override
+  Widget build(BuildContext context) {
+    return (MaterialApp(
+      home: Scaffold(
+        backgroundColor: Color.fromRGBO(49, 49, 49, 1),
+        appBar: AppBar(
+          backgroundColor: Colors.blue[900],
+        ),
+      ),
+    ));
+  }
+}
+
+class CostCalculator extends StatefulWidget {
+  @override
+  _CostCalculatorState createState() => _CostCalculatorState();
+}
+
+class _CostCalculatorState extends State<CostCalculator> {
+  @override
+  Widget build(BuildContext context) {
+    return (MaterialApp(
+      home: Scaffold(
+        backgroundColor: Color.fromRGBO(49, 49, 49, 1),
+        appBar: AppBar(
+          backgroundColor: Colors.blue[900],
+        ),
+      ),
+    ));
+  }
+}
+
+
 
 
 
