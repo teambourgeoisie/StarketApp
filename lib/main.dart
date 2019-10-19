@@ -40,29 +40,11 @@ class _HomeState extends State<Home> {
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              FlatButton(),
-            ],
-
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              FlatButton(),
-            ],
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              FlatButton(),
-            ],
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              FlatButton(
+              FlatButton(onPressed: (){},
+                padding: EdgeInsets.symmetric(horizontal: 178),
                 color: Colors.red,
                 child: Text(
-                  'Tourism',
+                  'Store',
                   style: TextStyle(
                     fontFamily: 'Rounded',
                     fontSize: 15,
@@ -75,9 +57,45 @@ class _HomeState extends State<Home> {
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
-
-
+            children: <Widget>[
+              FlatButton(onPressed: (){},
+                padding: EdgeInsets.symmetric(horizontal: 140),
+                color: Colors.red,
+                child: Text(
+                  'Cost Calculator',
+                  style: TextStyle(
+                    fontFamily: 'Rounded',
+                    fontSize: 15,
+                    color: Colors.white,
+                  ),
+                ),
+              ),
+            ],
           ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+
+            children: <Widget>[
+              FlatButton(
+                padding: EdgeInsets.symmetric(horizontal: 170),
+                onPressed:(){},
+
+                color: Colors.red,
+                child: Text(
+                  'Tourism',
+
+                  style: TextStyle(
+                    fontFamily: 'Rounded',
+                    fontSize: 15,
+                    color: Colors.white,
+
+
+                  ),
+                ),
+              ),
+            ],
+          ),
+
         ],
     ),
   );
