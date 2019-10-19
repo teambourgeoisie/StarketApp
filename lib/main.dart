@@ -16,15 +16,35 @@ class _HomeState extends State<Home> {
     return Scaffold(
       backgroundColor: Color.fromRGBO(49, 49, 49, 1),
       appBar: AppBar(
-        title: Text('Starket'),
+        backgroundColor: Colors.blue[900],
+        title: Text(
+            'Starket',
+          style: TextStyle(
+            fontFamily: 'Rounded',
+            fontSize: 28,
+
+
+          ),
+
+        ),
         centerTitle: true,
       ),
       body: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
-        Image.asset('assets/starketinapplogo.png'),
+          Container(
+            padding: EdgeInsets.symmetric(horizontal: 20, vertical: 30),
+            child: Image.asset(
+              'assets/starketinapplogo.png',
+              height: 200,
+              width: 200,
+
+        ),
+          ),
         ],
-      ),
-    );
+    ),
+      );
+
   }
 }
 
