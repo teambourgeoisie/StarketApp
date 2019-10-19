@@ -124,11 +124,14 @@ class _StoreState extends State<Store> {
           backgroundColor: Colors.blue[900],
         ),
         body: Row(
+          crossAxisAlignment: CrossAxisAlignment.end,
           children: <Widget>[
-            FlatButton(
+            IconButton(
               onPressed:(){
                 runApp(Home());
               },
+              icon: Image.asset('assets/circled-left.png'),
+              iconSize: 75,
             ),
           ],
         ),
