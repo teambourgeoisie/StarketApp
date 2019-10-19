@@ -1,19 +1,17 @@
 import 'package:flutter/material.dart';
 
-void main() => runApp(MaterialApp(
-  home: Home(),
-));
+void main() => runApp(Home());
 
 class Home extends StatefulWidget {
   @override
   _HomeState createState() => _HomeState();
 }
 
-
 class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return MaterialApp(
+      home: Scaffold(
       backgroundColor: Color.fromRGBO(49, 49, 49, 1),
       appBar: AppBar(
         backgroundColor: Colors.blue[900],
@@ -105,7 +103,8 @@ class _HomeState extends State<Home> {
 
         ],
     ),
-  );
+  ),
+    );
 
   }
 }
