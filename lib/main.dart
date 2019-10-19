@@ -14,14 +14,15 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color.fromRGBO(49, 49, 49, 1),
       appBar: AppBar(
         title: Text('Starket'),
         centerTitle: true,
       ),
-      body: Container(
-        child: Image.asset('assets/starketinapplogo'),
-        color: Color.fromRGBO(49, 49, 46, 1),
-
+      body: Column(
+        children: <Widget>[
+        Image.asset('assets/starketinapplogo.png'),
+        ],
       ),
     );
   }
