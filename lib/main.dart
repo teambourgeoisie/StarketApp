@@ -4,7 +4,7 @@ void main() => runApp(MaterialApp(
   home:Text(
     'HELLO',
     style: TextStyle(
-      fontSize: 80,
+      fontSize: 180,
 
     ),
   ),
