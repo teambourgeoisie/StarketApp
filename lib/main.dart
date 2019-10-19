@@ -1,12 +1,31 @@
 import 'package:flutter/material.dart';
 
 void main() => runApp(MaterialApp(
-  home:Text(
-    'HELLO',
-    style: TextStyle(
-      fontSize: 180,
-
-    ),
-  ),
+  home: Home(),
 ));
+
+class Home extends StatefulWidget {
+  @override
+  _HomeState createState() => _HomeState();
+}
+
+class _HomeState extends State<Home> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Starket'),
+        centerTitle: true,
+      ),
+      body: Container(
+        child: Image.asset('assets/starketinapplogo'),
+        color: Color.fromRGBO(49, 49, 46, 1),
+
+      ),
+    );
+  }
+}
+
+
+
 
