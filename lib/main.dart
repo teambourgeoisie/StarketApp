@@ -22,10 +22,7 @@ class _HomeState extends State<Home> {
           style: TextStyle(
             fontFamily: 'Rounded',
             fontSize: 28,
-
-
           ),
-
         ),
         centerTitle: true,
       ),
@@ -38,12 +35,52 @@ class _HomeState extends State<Home> {
               'assets/starketinapplogo.png',
               height: 200,
               width: 200,
+            ),
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              FlatButton(),
+            ],
 
-        ),
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              FlatButton(),
+            ],
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              FlatButton(),
+            ],
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              FlatButton(
+                color: Colors.red,
+                child: Text(
+                  'Tourism',
+                  style: TextStyle(
+                    fontFamily: 'Rounded',
+                    fontSize: 15,
+                    color: Colors.white,
+                  ),
+                ),
+              ),
+            ],
+
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+
+
           ),
         ],
     ),
-      );
+  );
 
   }
 }
