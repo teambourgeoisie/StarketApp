@@ -40,7 +40,10 @@ class _HomeState extends State<Home> {
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              FlatButton(onPressed: (){},
+              FlatButton(
+                onPressed: (){
+                  runApp(Store());
+                },
                 padding: EdgeInsets.symmetric(horizontal: 178),
                 color: Colors.red,
                 child: Text(
@@ -102,6 +105,26 @@ class _HomeState extends State<Home> {
 
   }
 }
+
+class Store extends StatefulWidget {
+  @override
+  _StoreState createState() => _StoreState();
+}
+
+class _StoreState extends State<Store> {
+  @override
+  Widget build(BuildContext context) {
+    return (MaterialApp(
+      home: Scaffold(
+        backgroundColor: Color.fromRGBO(49, 49, 49, 1),
+        appBar: AppBar(
+          backgroundColor: Colors.blue[900],
+        ),
+      ),
+    ));
+  }
+}
+
 
 
 
