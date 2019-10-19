@@ -1,6 +1,11 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 
 void main() => runApp(Home());
+
+
+
 
 class Home extends StatefulWidget {
   @override
@@ -115,13 +120,18 @@ class Store extends StatefulWidget {
 }
 
 class _StoreState extends State<Store> {
-  @override
+  //@override
+  var planets=['Pluto','Eris', 'Hameau','Makemake' ];
+  var currentItemSelected='Pluto';
   Widget build(BuildContext context) {
     return (MaterialApp(
+      theme: ThemeData(
+        canvasColor: Color.fromRGBO(84, 50, 110, 1),
+      ),
       home: Scaffold(
         backgroundColor: Color.fromRGBO(49, 49, 49, 1),
         appBar: AppBar(
-          backgroundColor: Colors.blue[900],
+          backgroundColor: Color.fromRGBO(84, 50, 110, 1)
         ),
         body: Row(
           crossAxisAlignment: CrossAxisAlignment.end,
@@ -132,6 +142,34 @@ class _StoreState extends State<Store> {
               },
               icon: Image.asset('assets/circled-left.png'),
               iconSize: 75,
+            ),
+            DropdownButton<String>(
+
+              items: planets.map((String dropDownStringItem){
+
+                return DropdownMenuItem<String>(
+
+
+                  value: dropDownStringItem,
+
+
+                  child: Text(
+
+                      dropDownStringItem,
+                      style:TextStyle(
+                        color: Colors.white,
+
+                      ),
+                  ),
+
+                );
+              }).toList(),
+              onChanged: (String newValueSelected){
+                setState(() {
+                  this.currentItemSelected= newValueSelected;
+                });
+              },
+              value: currentItemSelected,
             ),
           ],
         ),
@@ -152,7 +190,19 @@ class _TourismState extends State<Tourism> {
       home: Scaffold(
         backgroundColor: Color.fromRGBO(49, 49, 49, 1),
         appBar: AppBar(
-          backgroundColor: Colors.blue[900],
+          backgroundColor: Color.fromRGBO(84, 50, 110, 1),
+        ),
+        body: Row(
+          crossAxisAlignment: CrossAxisAlignment.end,
+          children: <Widget>[
+            IconButton(
+              onPressed:(){
+                runApp(Home());
+              },
+              icon: Image.asset('assets/circled-left.png'),
+              iconSize: 75,
+            ),
+          ],
         ),
       ),
     ));
@@ -171,7 +221,19 @@ class _CostCalculatorState extends State<CostCalculator> {
       home: Scaffold(
         backgroundColor: Color.fromRGBO(49, 49, 49, 1),
         appBar: AppBar(
-          backgroundColor: Colors.blue[900],
+          backgroundColor: Color.fromRGBO(84, 50, 110, 1)
+        ),
+        body: Row(
+          crossAxisAlignment: CrossAxisAlignment.end,
+          children: <Widget>[
+            IconButton(
+              onPressed:(){
+                runApp(Home());
+              },
+              icon: Image.asset('assets/circled-left.png'),
+              iconSize: 75,
+            ),
+          ],
         ),
 
       ),
