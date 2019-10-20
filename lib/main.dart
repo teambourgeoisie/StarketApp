@@ -19,6 +19,7 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
+        resizeToAvoidBottomPadding: false,
       backgroundColor: Color.fromRGBO(49, 49, 49, 1),
       appBar: AppBar(
         backgroundColor: Colors.blue[900],
@@ -140,6 +141,7 @@ class _StoreState extends State<Store> {
         canvasColor: Color.fromRGBO(84, 50, 110, 1),
       ),
       home: Scaffold(
+        resizeToAvoidBottomPadding: false,
         backgroundColor: Color.fromRGBO(49, 49, 49, 1),
         appBar: AppBar(
             title: Text(
@@ -433,6 +435,7 @@ class _CostCalculatorState extends State<CostCalculator> {
   Widget build(BuildContext context) {
     return (MaterialApp(
       home: Scaffold(
+        resizeToAvoidBottomPadding: false,
         backgroundColor: Color.fromRGBO(49, 49, 49, 1),
         appBar: AppBar(
             title: Text(
