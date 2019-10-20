@@ -449,11 +449,46 @@ class _CostCalculatorState extends State<CostCalculator> {
               ],
             ),
             Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: <Widget>[
-                Text("Cost of selected producted: " + semitotal.toStringAsFixed(2)),
-                Text("Cost of shipping to Neptune: " + Planet.calculateCostBeforeShippingToEarth(planet,year).toStringAsFixed(2)),
-                Text("Cost of shipping from Neptune to Earth: 224400"),
-                Text("Total Cost = " + Planet.totalCost(planet, year).toStringAsFixed(2)),
+                Text(
+
+                    "Cost of selected product: " + semitotal.toStringAsFixed(2) + " USD",
+                  style: TextStyle(
+
+                    fontSize: 15,
+                    color: Colors.white,
+                    fontFamily: 'Rounded',
+
+                  ),
+                ),
+                Text(
+                  "Cost of shipping to Neptune: " + Planet.calculateCostBeforeShippingToEarth(planet,year).toStringAsFixed(2) + " USD",
+                  style: TextStyle(
+                    fontSize: 15,
+                    color: Colors.white,
+                    fontFamily: 'Rounded',
+                  ),
+                ),
+                Text(
+                  "Cost of shipping from Neptune to Earth: 224400 USD",
+                  style: TextStyle(
+                    fontSize: 15,
+                    color: Colors.white,
+                    fontFamily: 'Rounded',
+
+                  ),
+                ),
+                Text(
+                  "Total Cost = " + Planet.totalCost(planet, year).toStringAsFixed(2) + " USD",
+                  style: TextStyle(
+                    fontSize: 15,
+                    color: Colors.white,
+                    fontFamily: 'Rounded',
+
+                  ),
+                ),
               ],
             ),
           ],
