@@ -12,6 +12,8 @@ class Home extends StatefulWidget {
   _HomeState createState() => _HomeState();
 }
 
+String selectedStringFromStore = "Pluto";
+
 class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
@@ -98,8 +100,6 @@ class _HomeState extends State<Home> {
                     fontFamily: 'Rounded',
                     fontSize: 15,
                     color: Colors.white,
-
-
                   ),
                 ),
               ),
@@ -180,6 +180,7 @@ class _StoreState extends State<Store> {
                   onChanged: (String newValueSelected){
                     setState(() {
                       this.currentItemSelected= newValueSelected;
+                      selectedStringFromStore = this.currentItemSelected;
                       int options;
                       for(int i=0; i<4; i++){
                         if(planets[i]==newValueSelected){
@@ -342,7 +343,7 @@ class _StoreState extends State<Store> {
                 RaisedButton(
                   onPressed: (){
                     semitotal=rock*250+nitrogen*15+ethane*0.60+water*0.30;
-                    runApp(CostCalculator());
+                    //runApp(CostCalculator());
                     print ('Semitotal is' + semitotal.toString());
                   },
                   child: Text('Checkout'),
@@ -405,34 +406,64 @@ class CostCalculator extends StatefulWidget {
 }
 
 class _CostCalculatorState extends State<CostCalculator> {
+  int year = 2019;
+  Planet planet = new Planet(selectedStringFromStore);
   @override
   Widget build(BuildContext context) {
     return (MaterialApp(
       home: Scaffold(
         backgroundColor: Color.fromRGBO(49, 49, 49, 1),
         appBar: AppBar(
-          backgroundColor: Color.fromRGBO(84, 50, 110, 1)
+            backgroundColor: Color.fromRGBO(84, 50, 110, 1)
         ),
-        body: Row(
-          crossAxisAlignment: CrossAxisAlignment.end,
+        body: Column(
           children: <Widget>[
-            IconButton(
-              onPressed:(){
-                runApp(Home());
-              },
-              icon: Image.asset('assets/circled-left.png'),
-              iconSize: 75,
+            Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: <Widget>[
+                IconButton(
+                  onPressed:(){
+                    runApp(Home());
+                  },
+                  icon: Image.asset('assets/circled-left.png'),
+                  iconSize: 75,
+                ),
+                Flexible(
+                  child: TextField(
+                      keyboardType: TextInputType.numberWithOptions(),
+                      decoration: InputDecoration(
+                          fillColor: Colors.white,
+                          labelText: "Enter Year of Arrival to Neptune"
+                      ),
+                      onSubmitted:(userEnteredYear) {
+                        setState(() {
+                          if(userEnteredYear == null){
+                            print("Please Enter a Year.");
+                          }else{
+                            year = int.parse(userEnteredYear);
+                          }
+                        });
+                      }
+                  ),
+                ),
+              ],
+            ),
+            Column(
+              children: <Widget>[
+                Text("Cost of selected producted: " + semitotal.toStringAsFixed(2)),
+                Text("Cost of shipping to Neptune: " + Planet.calculateCostBeforeShippingToEarth(planet,year).toStringAsFixed(2)),
+                Text("Cost of shipping from Neptune to Earth: 224400"),
+                Text("Total Cost = " + Planet.totalCost(planet, year).toStringAsFixed(2)),
+              ],
             ),
           ],
         ),
-
       ),
     ));
   }
 }
 
-
-class Planets{
+class Planet{
   var distanceFromSun;
   String name;
   var angularVelocity;
@@ -441,7 +472,7 @@ class Planets{
   var angularVelocities = [1.272, 1.18, 0.642, 1.446];
   var initialAnglesOfPlanets = [214, 193, 35, 306];
 
-  Planets(String name){
+  Planet(String name){
     this.name = name;
     this.initialAngle = initialAngle;
     if(name == "Haumea"){
@@ -474,7 +505,7 @@ class Planets{
     return initialAngle + (angularVelocity*time);
   }
 
-  static double calculateDistance(Planets planet, int whatYear){
+  static double calculateDistance(Planet planet, int whatYear){
     int time = whatYear - 2019;
     if(time < 0){
       time *= -1;
@@ -484,17 +515,29 @@ class Planets{
     var distanceAU = sqrt((pow((30.06*cos(neptuneAngleRadians))-(planet.distanceFromSun*cos(angleRadians)),2)+(pow((30.06*sin(neptuneAngleRadians))-(planet.distanceFromSun*sin(angleRadians)),2))));
     return distanceAU * 1.496e+8; // distance km
   }
-}
 
-class Items{
-  var price = 0;
-  Planets planetShippingFrom;
-
-  double calculateCost(){
-    var totalCost;
-    return totalCost;
+/*  static Planet bestPlanetToShipFrom(int whatYear){
+    int time = whatYear - 2019;
+   // List<Planet>
+    if(time < 0){
+      time *= -1;
+    }
+   // int indexOfSmallestDistance = ;
+  }*/
+  static double calculateCostBeforeShippingToEarth(Planet planetShippingFrom, int whatYear){
+    double costBeforeShipping = 0.05 * (Planet.calculateDistance(planetShippingFrom, whatYear)/10000);
+    return costBeforeShipping;
+  }
+  static double calculateCostAfterShippingToEarth(Planet planetShippingFrom, whatYear){
+    return calculateCostBeforeShippingToEarth(planetShippingFrom, whatYear)+ 224400;
+  }
+  static double totalCost(Planet planetShippingFrom, whatYear){
+    return 224400 + semitotal + calculateCostBeforeShippingToEarth(planetShippingFrom, whatYear);
   }
 }
+
+
+
 
 
 
