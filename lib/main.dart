@@ -142,6 +142,14 @@ class _StoreState extends State<Store> {
       home: Scaffold(
         backgroundColor: Color.fromRGBO(49, 49, 49, 1),
         appBar: AppBar(
+            title: Text(
+              'Store',
+              style: TextStyle(
+                fontFamily: 'Rounded',
+                fontSize: 28,
+              ),
+            ),
+            centerTitle: true,
           backgroundColor: Color.fromRGBO(84, 50, 110, 1)
         ),
         body: Column(
@@ -372,6 +380,14 @@ class _TourismState extends State<Tourism> {
       home: Scaffold(
         backgroundColor: Color.fromRGBO(49, 49, 49, 1),
         appBar: AppBar(
+          title: Text(
+            'Tourism',
+            style: TextStyle(
+              fontFamily: 'Rounded',
+              fontSize: 28,
+            ),
+          ),
+          centerTitle: true,
           backgroundColor: Color.fromRGBO(84, 50, 110, 1),
         ),
         body: Column(
@@ -419,6 +435,14 @@ class _CostCalculatorState extends State<CostCalculator> {
       home: Scaffold(
         backgroundColor: Color.fromRGBO(49, 49, 49, 1),
         appBar: AppBar(
+            title: Text(
+              'Cost Calculator',
+              style: TextStyle(
+                fontFamily: 'Rounded',
+                fontSize: 28,
+              ),
+            ),
+            centerTitle: true,
             backgroundColor: Color.fromRGBO(84, 50, 110, 1)
         ),
         body: Column(
@@ -466,7 +490,7 @@ class _CostCalculatorState extends State<CostCalculator> {
               children: <Widget>[
                 Text(
 
-                    "Cost of selected product: " + semitotal.toStringAsFixed(2) + " USD",
+                    "Cost of selected product(s): " + semitotal.toStringAsFixed(2) + " USD",
                   style: TextStyle(
 
                     fontSize: 15,
@@ -495,8 +519,8 @@ class _CostCalculatorState extends State<CostCalculator> {
                 Text(
                   "Total Cost = " + Planet.totalCost(planet, year).toStringAsFixed(2) + " USD",
                   style: TextStyle(
-                    fontSize: 15,
-                    color: Colors.white,
+                    fontSize: 17,
+                    color: Colors.yellowAccent,
                     fontFamily: 'Rounded',
 
                   ),
