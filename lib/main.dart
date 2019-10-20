@@ -133,7 +133,7 @@ class _StoreState extends State<Store> {
 
   var planets=['Pluto','Eris', 'Haumea','Makemake' ];
   var currentItemSelected='Pluto';
-  String pic='assets/blank.PNG';
+  String pic='assets/Pluto.png';
   Widget build(BuildContext context) {
     return (MaterialApp(
       theme: ThemeData(
@@ -187,6 +187,7 @@ class _StoreState extends State<Store> {
                           options=i;
                         }
                       }
+
                       if(options==0){
                         pic='assets/Pluto.png';
                       }
@@ -196,8 +197,11 @@ class _StoreState extends State<Store> {
                       else if(options==2){
                         pic='assets/Haumea.png';
                       }
-                      else{
+                      else if(options==3){
                         pic='assets/Makemake.png';
+                      }
+                      else{
+                        pic='assets/Pluto.png';
                       }
                       print(options);
                     });
@@ -430,10 +434,17 @@ class _CostCalculatorState extends State<CostCalculator> {
                 ),
                 Flexible(
                   child: TextField(
+                      style: TextStyle(
+                        fontFamily: 'Rounded',
+                        fontSize: 18,
+                        decorationColor: Colors.white,
+                      ),
                       keyboardType: TextInputType.numberWithOptions(),
                       decoration: InputDecoration(
                           fillColor: Colors.white,
-                          labelText: "Enter Year of Arrival to Neptune"
+                          labelText: "Enter Year of Arrival to Neptune",
+                          labelStyle:TextStyle(color: Colors.white),
+
                       ),
                       onSubmitted:(userEnteredYear) {
                         setState(() {
