@@ -121,8 +121,9 @@ class Store extends StatefulWidget {
 
 class _StoreState extends State<Store> {
   //@override
-  var planets=['Pluto','Eris', 'Hameau','Makemake' ];
+  var planets=['Pluto','Eris', 'Haumea','Makemake' ];
   var currentItemSelected='Pluto';
+  String pic='assets/blank.PNG';
   Widget build(BuildContext context) {
     return (MaterialApp(
       theme: ThemeData(
@@ -134,7 +135,7 @@ class _StoreState extends State<Store> {
           backgroundColor: Color.fromRGBO(84, 50, 110, 1)
         ),
         body: Row(
-          crossAxisAlignment: CrossAxisAlignment.end,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
             IconButton(
               onPressed:(){
@@ -157,7 +158,7 @@ class _StoreState extends State<Store> {
 
                       dropDownStringItem,
                       style:TextStyle(
-                        color: Colors.white,
+                        color: Colors.white
 
                       ),
                   ),
@@ -167,10 +168,39 @@ class _StoreState extends State<Store> {
               onChanged: (String newValueSelected){
                 setState(() {
                   this.currentItemSelected= newValueSelected;
+                  int options;
+                  for(int i=0; i<4; i++){
+                    if(planets[i]==newValueSelected){
+                      options=i;
+                    }
+                  }
+                  if(options==0){
+                    pic='assets/Pluto.png';
+                  }
+                  else if(options==1){
+                    pic='assets/Eris.png';
+                  }
+                  else if(options==2){
+                    pic='assets/Haumea.png';
+                  }
+                  else{
+                    pic='assets/Makemake.png';
+                  }
+                  print(options);
                 });
               },
               value: currentItemSelected,
+
             ),
+            Container(
+              padding: EdgeInsets.fromLTRB(60, 20, 0, 20),
+              child: Image.asset(
+                  pic,
+                  height: 100,
+                  width: 100,
+              ),
+
+            )
           ],
         ),
       ),
