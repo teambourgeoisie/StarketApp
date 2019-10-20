@@ -482,6 +482,7 @@ class _CostCalculatorState extends State<CostCalculator> {
                       }
                   ),
                 ),
+
               ],
             ),
             Column(
@@ -523,6 +524,14 @@ class _CostCalculatorState extends State<CostCalculator> {
                     color: Colors.yellowAccent,
                     fontFamily: 'Rounded',
 
+                  ),
+                ),
+                Container(
+                  padding: EdgeInsets.fromLTRB(40,50, 0, 0),
+                  child: Image(
+                    image: AssetImage('assets/Money.png'),
+                    height: 300,
+                    width: 300,
                   ),
                 ),
               ],
