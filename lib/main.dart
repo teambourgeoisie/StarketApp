@@ -342,6 +342,7 @@ class _StoreState extends State<Store> {
                 RaisedButton(
                   onPressed: (){
                     semitotal=rock*250+nitrogen*15+ethane*0.60+water*0.30;
+                    runApp(CostCalculator());
                     print ('Semitotal is' + semitotal.toString());
                   },
                   child: Text('Checkout'),
