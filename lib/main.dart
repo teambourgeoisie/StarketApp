@@ -368,8 +368,8 @@ class _TourismState extends State<Tourism> {
         appBar: AppBar(
           backgroundColor: Color.fromRGBO(84, 50, 110, 1),
         ),
-        body: Row(
-          crossAxisAlignment: CrossAxisAlignment.end,
+        body: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
             IconButton(
               onPressed:(){
@@ -378,6 +378,20 @@ class _TourismState extends State<Tourism> {
               icon: Image.asset('assets/circled-left.png'),
               iconSize: 75,
             ),
+            IconButton(
+
+              onPressed: (){},
+              icon: Image.asset('assets/TourismEris.png'),
+
+              iconSize: 200,
+
+            ),
+            IconButton(
+              onPressed: (){},
+              icon:Image.asset('assets/TourismMakemake.png'),
+              iconSize: 200,
+
+            )
           ],
         ),
       ),
