@@ -593,6 +593,7 @@ class Planet{
     var angleRadians = planet.getNewAngle(time) * (pi/180);
     var neptuneAngleRadians = (0 + 2.195*(time)) * (pi/180);
     var distanceAU = sqrt((pow((30.06*cos(neptuneAngleRadians))-(planet.distanceFromSun*cos(angleRadians)),2)+(pow((30.06*sin(neptuneAngleRadians))-(planet.distanceFromSun*sin(angleRadians)),2))));
+    print("distanceAU = " + distanceAU.toString());
     return distanceAU * 1.496e+8; // distance km
   }
 
