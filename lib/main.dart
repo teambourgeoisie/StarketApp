@@ -509,7 +509,7 @@ class _CostCalculatorState extends State<CostCalculator> {
                   ),
                 ),
                 Text(
-                  "Cost of shipping from Neptune to Earth: 224400 USD",
+                  "Cost of shipping from Neptune to Earth: 22440 USD",
                   style: TextStyle(
                     fontSize: 15,
                     color: Colors.white,
@@ -609,10 +609,10 @@ class Planet{
     return costBeforeShipping;
   }
   static double calculateCostAfterShippingToEarth(Planet planetShippingFrom, whatYear){
-    return calculateCostBeforeShippingToEarth(planetShippingFrom, whatYear)+ 224400;
+    return calculateCostBeforeShippingToEarth(planetShippingFrom, whatYear)+ 22440;
   }
   static double totalCost(Planet planetShippingFrom, whatYear){
-    return 224400 + semitotal + calculateCostBeforeShippingToEarth(planetShippingFrom, whatYear);
+    return 22440 + semitotal + calculateCostBeforeShippingToEarth(planetShippingFrom, whatYear);
   }
 }
 
