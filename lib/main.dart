@@ -1,8 +1,10 @@
 import 'dart:convert';
 import 'dart:math';
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+double semitotal=0.0;
 void main() => runApp(Home());
 
 class Home extends StatefulWidget {
@@ -124,6 +126,11 @@ class Tourism extends StatefulWidget {
 
 class _StoreState extends State<Store> {
   //@override
+  int rock=0;
+  int nitrogen=0;
+  int ethane=0;
+  int water=0;
+
   var planets=['Pluto','Eris', 'Haumea','Makemake' ];
   var currentItemSelected='Pluto';
   String pic='assets/blank.PNG';
@@ -137,75 +144,215 @@ class _StoreState extends State<Store> {
         appBar: AppBar(
           backgroundColor: Color.fromRGBO(84, 50, 110, 1)
         ),
-        body: Row(
-          crossAxisAlignment: CrossAxisAlignment.center,
+        body: Column(
           children: <Widget>[
-            IconButton(
-              onPressed:(){
-                runApp(Home());
-              },
-              icon: Image.asset('assets/circled-left.png'),
-              iconSize: 75,
-            ),
-            DropdownButton<String>(
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: <Widget>[
+                IconButton(
+                  onPressed:(){
+                    runApp(Home());
+                  },
+                  icon: Image.asset('assets/circled-left.png'),
+                  iconSize: 75,
+                ),
+                DropdownButton<String>(
 
-              items: planets.map((String dropDownStringItem){
+                  items: planets.map((String dropDownStringItem){
 
-                return DropdownMenuItem<String>(
-
-
-                  value: dropDownStringItem,
+                    return DropdownMenuItem<String>(
 
 
-                  child: Text(
+                      value: dropDownStringItem,
 
-                      dropDownStringItem,
-                      style:TextStyle(
-                        color: Colors.white
 
+                      child: Text(
+
+                        dropDownStringItem,
+                        style:TextStyle(
+                            color: Colors.white
+
+                        ),
                       ),
+
+                    );
+                  }).toList(),
+                  onChanged: (String newValueSelected){
+                    setState(() {
+                      this.currentItemSelected= newValueSelected;
+                      int options;
+                      for(int i=0; i<4; i++){
+                        if(planets[i]==newValueSelected){
+                          options=i;
+                        }
+                      }
+                      if(options==0){
+                        pic='assets/Pluto.png';
+                      }
+                      else if(options==1){
+                        pic='assets/Eris.png';
+                      }
+                      else if(options==2){
+                        pic='assets/Haumea.png';
+                      }
+                      else{
+                        pic='assets/Makemake.png';
+                      }
+                      print(options);
+                    });
+                  },
+                  value: currentItemSelected,
+
+                ),
+                Container(
+                  padding: EdgeInsets.fromLTRB(60, 20, 0, 20),
+                  child: Image.asset(
+                    pic,
+                    height: 100,
+                    width: 100,
                   ),
 
-                );
-              }).toList(),
-              onChanged: (String newValueSelected){
-                setState(() {
-                  this.currentItemSelected= newValueSelected;
-                  int options;
-                  for(int i=0; i<4; i++){
-                    if(planets[i]==newValueSelected){
-                      options=i;
-                    }
-                  }
-                  if(options==0){
-                    pic='assets/Pluto.png';
-                  }
-                  else if(options==1){
-                    pic='assets/Eris.png';
-                  }
-                  else if(options==2){
-                    pic='assets/Haumea.png';
-                  }
-                  else{
-                    pic='assets/Makemake.png';
-                  }
-                  print(options);
-                });
-              },
-              value: currentItemSelected,
+                )
 
+              ],
             ),
-            Container(
-              padding: EdgeInsets.fromLTRB(60, 20, 0, 20),
-              child: Image.asset(
-                  pic,
-                  height: 100,
-                  width: 100,
-              ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: <Widget>[
+                IconButton(
+                  iconSize: 80,
+                  onPressed: (){
+                    setState(() {
+                      rock ++;
+                    });
+                    print(rock);
+                  },
+                  icon: Image.asset(
+                    'assets/SpaceRocks.png',
+                  ),
+                ),
 
-            )
+                Text(
+
+                  'x$rock',
+                  style: TextStyle(
+                    fontSize: 15,
+                    color: Colors.white,
+                  ),
+
+                )
+
+              ],
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: <Widget>[
+                IconButton(
+                  iconSize: 80,
+                  onPressed: (){
+                    setState(() {
+                      nitrogen ++;
+                    });
+                    print(nitrogen);
+                  },
+                  icon: Image.asset('assets/NitrogenGas.png'),
+                ),
+                Text(
+                  'x$nitrogen',
+                  style: TextStyle(
+                    fontSize: 15,
+                    color: Colors.white,
+                  ),
+                )
+
+
+
+
+              ],
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: <Widget>[
+                IconButton(
+                  iconSize: 80,
+                  onPressed: (){
+                    setState(() {
+                      ethane ++;
+                    });
+                    print(ethane);
+                  },
+                  icon: Image.asset('assets/Ethane.png'),
+                ),
+                Text(
+                  'x$ethane',
+                  style: TextStyle(
+                    fontSize: 15,
+                    color: Colors.white,
+                  ),
+                )
+
+
+
+
+              ]
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: <Widget>[
+                IconButton(
+                  iconSize: 80,
+                  onPressed: (){
+                    setState(() {
+                      water ++;
+                    });
+                    print(water);
+                  },
+                  icon: Image.asset('assets/FreshWater.png'),
+                ),
+                Text(
+                  'x$water',
+                  style: TextStyle(
+                    fontSize: 15,
+                    color: Colors.white,
+                  ),
+                )
+
+
+
+
+              ],
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                RaisedButton(
+                  onPressed: (){
+
+                    setState(() {
+                      rock=0;
+                      nitrogen=0;
+                      ethane=0;
+                      water=0;
+                    });
+
+
+                  },
+                  child: Text('Clear'),
+                ),
+                RaisedButton(
+                  onPressed: (){
+                    semitotal=rock*250+nitrogen*15+ethane*0.60+water*0.30;
+                    print ('Semitotal is' + semitotal.toString());
+                  },
+                  child: Text('Checkout'),
+                )
+              ],
+            ),
+
           ],
-        ),
+        )
+
+
       ),
     ));
   }
