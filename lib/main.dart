@@ -465,7 +465,7 @@ class _CostCalculatorState extends State<CostCalculator> {
                       style: TextStyle(
                         fontFamily: 'Rounded',
                         fontSize: 18,
-                        decorationColor: Colors.white,
+                        color: Colors.white,
                       ),
                       keyboardType: TextInputType.numberWithOptions(),
                       decoration: InputDecoration(
