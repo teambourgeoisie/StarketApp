@@ -1,11 +1,9 @@
 import 'dart:convert';
+import 'dart:math';
 
 import 'package:flutter/material.dart';
 
 void main() => runApp(Home());
-
-
-
 
 class Home extends StatefulWidget {
   @override
@@ -119,6 +117,11 @@ class Store extends StatefulWidget {
   _StoreState createState() => _StoreState();
 }
 
+class Tourism extends StatefulWidget {
+  @override
+  _TourismState createState() => _TourismState();
+}
+
 class _StoreState extends State<Store> {
   //@override
   var planets=['Pluto','Eris', 'Haumea','Makemake' ];
@@ -208,11 +211,6 @@ class _StoreState extends State<Store> {
   }
 }
 
-class Tourism extends StatefulWidget {
-  @override
-  _TourismState createState() => _TourismState();
-}
-
 class _TourismState extends State<Tourism> {
   @override
   Widget build(BuildContext context) {
@@ -268,6 +266,71 @@ class _CostCalculatorState extends State<CostCalculator> {
 
       ),
     ));
+  }
+}
+
+
+class Planets{
+  var distanceFromSun;
+  String name;
+  var angularVelocity;
+  var initialAngle;
+  var distancesToTheSun = [43.1, 43.8, 96.4, 39]; // Haumea, Makemake, Eris, Pluto.
+  var angularVelocities = [1.272, 1.18, 0.642, 1.446];
+  var initialAnglesOfPlanets = [214, 193, 35, 306];
+
+  Planets(String name){
+    this.name = name;
+    this.initialAngle = initialAngle;
+    if(name == "Haumea"){
+      this.distanceFromSun = distancesToTheSun.elementAt(0);
+      this.angularVelocity = angularVelocities.elementAt(0);
+      this.initialAngle = initialAnglesOfPlanets.elementAt(0);
+    }else if(name == "Makemake"){
+      this.distanceFromSun = distancesToTheSun.elementAt(1);
+      this.angularVelocity = angularVelocities.elementAt(1);
+      this.initialAngle = initialAnglesOfPlanets.elementAt(1);
+    }else if(name == "Eris"){
+      this.distanceFromSun = distancesToTheSun.elementAt(2);
+      this.angularVelocity = angularVelocities.elementAt(2);
+      this.initialAngle = initialAnglesOfPlanets.elementAt(2);
+    }else if(name == "Pluto"){
+      this.distanceFromSun = distancesToTheSun.elementAt(3);
+      this.angularVelocity = angularVelocities.elementAt(3);
+      this.initialAngle = initialAnglesOfPlanets.elementAt(3);
+    }else{
+      print("Argument is invalid.");
+    }
+
+  }
+
+  double getNewAngle(int whatYear){
+    int time = whatYear - 2019;
+    if(time < 0){
+      time *= -1;
+    }
+    return initialAngle + (angularVelocity*time);
+  }
+
+  static double calculateDistance(Planets planet, int whatYear){
+    int time = whatYear - 2019;
+    if(time < 0){
+      time *= -1;
+    }
+    var angleRadians = planet.getNewAngle(time) * (pi/180);
+    var neptuneAngleRadians = (0 + 2.195*(time)) * (pi/180);
+    var distanceAU = sqrt((pow((30.06*cos(neptuneAngleRadians))-(planet.distanceFromSun*cos(angleRadians)),2)+(pow((30.06*sin(neptuneAngleRadians))-(planet.distanceFromSun*sin(angleRadians)),2))));
+    return distanceAU * 1.496e+8; // distance km
+  }
+}
+
+class Items{
+  var price = 0;
+  Planets planetShippingFrom;
+
+  double calculateCost(){
+    var totalCost;
+    return totalCost;
   }
 }
 
